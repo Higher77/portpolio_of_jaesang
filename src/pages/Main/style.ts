@@ -204,23 +204,53 @@ export const ProjectTaskTitle = styled.h3`
 
 export const ProjectSliderContainer = styled.div`
   display: flex;
-  height: 900px;
-  width: 800px;
+  height: 600px;
+  width: 900px;
   margin: 80px auto 80px auto;
   background-color: aliceblue;
+  transition: transfrom 0.5s ease-in-out;
 `;
 
 export const ProjectImgBox = styled.div`
-  /* flex-basis: 500px; */
-  div {
-    width: 800px;
-  }
-  width: 800px;
+  position: relative;
   border: 1px solid red;
-  /* background-color: red; */
+  div {
+    width: 900px;
+  }
+  background-color: gainsboro;
+  /* transition: transfrom 1s ease-in-out; */
 `;
 
+export const ProjectImgList = styled.div``;
+
 export const ProjectImg = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 530px;
   display: block;
-  margin: 0px auto 0px auto;
+  transform: translate(-50%, -50%);
+`;
+
+export const ButtonBox = styled.div`
+  position: relative;
+  bottom: 430px;
+`;
+
+export const NextButton = styled.button`
+  position: relative;
+  left: 860px;
+  background-color: transparent;
+  img {
+    height: 100px;
+  }
+`;
+
+export const PrevButton = styled.button`
+  position: relative;
+  left: 10px;
+  background-color: transparent;
+  img {
+    height: 100px;
+  }
 `;

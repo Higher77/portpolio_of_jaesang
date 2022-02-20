@@ -1,8 +1,44 @@
-import React, { KeyboardEvent, MouseEvent, useState } from 'react';
+import React, {
+  KeyboardEvent,
+  MouseEvent,
+  useState,
+  useRef,
+  useEffect,
+} from 'react';
 import * as S from './style';
-import { title, skill, viva, imgupload } from 'assets/images';
+import {
+  title,
+  skill,
+  viva,
+  imgupload,
+  navermap,
+  host,
+  next,
+  prev,
+} from 'assets/images';
 
 const Main = () => {
+  const [iltalImgIndex, setIltalImgIndex] = useState<number>(0);
+
+  const silderContainer = useRef<HTMLDivElement>(null);
+
+  const handleNextButton = (): void => {
+    // console.log(silderContainer.current);
+    if (silderContainer.current) {
+      setIltalImgIndex(prev => prev + 1);
+    }
+  };
+
+  useEffect(() => {
+    silderContainer.current.style.transform = `translateX(-${
+      900 * iltalImgIndex
+    }px)`;
+  }, [iltalImgIndex]);
+
+  // console.log(currentIndex);
+
+  const imglist = [imgupload, navermap, host];
+
   return (
     <>
       <S.MainWapper>
@@ -222,20 +258,26 @@ const Main = () => {
                 </p>
               </li>
             </ul>
-            <S.ProjectSliderContainer>
-              <S.ProjectImgBox>
-                <div></div>
-                <S.ProjectImg src={imgupload}></S.ProjectImg>
-              </S.ProjectImgBox>
-              <S.ProjectImgBox>
-                <div></div>
-                {/* <S.ProjectImg src={imgupload}></S.ProjectImg> */}
-              </S.ProjectImgBox>
-              <S.ProjectImgBox>
-                <div></div>
-                {/* <S.ProjectImg src={imgupload}></S.ProjectImg> */}
-              </S.ProjectImgBox>
+            <S.ProjectSliderContainer ref={silderContainer}>
+              <S.ProjectImgList>
+                {imglist.map((img, key) => {
+                  return (
+                    <S.ProjectImgBox key={key}>
+                      <div />
+                      <S.ProjectImg src={img}></S.ProjectImg>
+                    </S.ProjectImgBox>
+                  );
+                })}
+              </S.ProjectImgList>
             </S.ProjectSliderContainer>
+            <S.ButtonBox>
+              <S.PrevButton>
+                <img alt="prev" src={prev} />
+              </S.PrevButton>
+              <S.NextButton onClick={handleNextButton}>
+                <img alt="next" src={next} />
+              </S.NextButton>
+            </S.ButtonBox>
           </S.ProjectTask>
         </S.ProjectSection>
       </S.MainWapper>
