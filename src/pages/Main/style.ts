@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const MainWapper = styled.div`
   width: 1050px;
@@ -203,25 +203,26 @@ export const ProjectTaskTitle = styled.h3`
 `;
 
 export const ProjectSliderContainer = styled.div`
-  display: flex;
   height: 600px;
   width: 900px;
   margin: 80px auto 80px auto;
-  background-color: aliceblue;
-  transition: transfrom 0.5s ease-in-out;
+  /* background-color: aliceblue; */
+  overflow: hidden;
+`;
+
+export const ProjectImgList = styled.div`
+  display: flex;
+  height: 600px;
+  transform: translateX(-900px);
 `;
 
 export const ProjectImgBox = styled.div`
   position: relative;
-  border: 1px solid red;
   div {
     width: 900px;
   }
-  background-color: gainsboro;
-  /* transition: transfrom 1s ease-in-out; */
+  /* background-color: antiquewhite; */
 `;
-
-export const ProjectImgList = styled.div``;
 
 export const ProjectImg = styled.img`
   position: absolute;
@@ -230,6 +231,7 @@ export const ProjectImg = styled.img`
   height: 530px;
   display: block;
   transform: translate(-50%, -50%);
+  border: 1px solid black;
 `;
 
 export const ButtonBox = styled.div`

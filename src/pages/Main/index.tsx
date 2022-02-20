@@ -3,9 +3,9 @@ import React, {
   MouseEvent,
   useState,
   useRef,
-  useEffect,
-} from 'react';
-import * as S from './style';
+  useEffect
+} from "react";
+import * as S from "./style";
 import {
   title,
   skill,
@@ -14,30 +14,74 @@ import {
   navermap,
   host,
   next,
-  prev,
-} from 'assets/images';
+  prev
+} from "assets/images";
+
+//state가 변경되면 Rerendering이 일어나므로 throttler가 초기화되므로 밖에 빼놓는다.
+let throttler;
 
 const Main = () => {
-  const [iltalImgIndex, setIltalImgIndex] = useState<number>(0);
+  const [iltalImgIndex, setIltalImgIndex] = useState<number>(1);
 
-  const silderContainer = useRef<HTMLDivElement>(null);
+  const imgList = useRef<HTMLDivElement>(null);
 
   const handleNextButton = (): void => {
-    // console.log(silderContainer.current);
-    if (silderContainer.current) {
-      setIltalImgIndex(prev => prev + 1);
+    if (throttler) return;
+
+    throttler = setTimeout(() => {
+      throttler = null;
+    }, 1000);
+
+    if (imgList.current) {
+      setIltalImgIndex((prev) => prev + 1);
+      imgList.current.style.transform = `translateX(${
+        -900 * (iltalImgIndex + 1)
+      }px)`;
+      imgList.current.style.transition = `transform 1s`;
+
+      if (iltalImgIndex + 1 === iltalImglist.length - 1) {
+        setIltalImgIndex(1);
+
+        setTimeout(() => {
+          imgList.current.style.transform = `translateX(${-900 * 1}px)`;
+
+          imgList.current.style.transition = `transform 0s`;
+        }, 1000);
+      }
     }
   };
 
-  useEffect(() => {
-    silderContainer.current.style.transform = `translateX(-${
-      900 * iltalImgIndex
-    }px)`;
-  }, [iltalImgIndex]);
+  const handlePrevButton = (): void => {
+    if (throttler) return;
 
-  // console.log(currentIndex);
+    throttler = setTimeout(() => {
+      throttler = null;
+    }, 1000);
 
-  const imglist = [imgupload, navermap, host];
+    if (imgList.current) {
+      setIltalImgIndex((prev) => prev - 1);
+      imgList.current.style.transform = `translateX(${
+        -900 * (iltalImgIndex - 1)
+      }px)`;
+      imgList.current.style.transition = `transform 1s`;
+
+      if (iltalImgIndex - 1 === 0) {
+        setIltalImgIndex(iltalImglist.length - 2);
+
+        setTimeout(() => {
+          imgList.current.style.transform = `translateX(${
+            -900 * (iltalImglist.length - 2)
+          }px)`;
+
+          imgList.current.style.transition = `transform 0s`;
+        }, 1000);
+      }
+    }
+  };
+
+  const iltalImglist = [host, imgupload, navermap, host, imgupload];
+
+  console.log(iltalImgIndex);
 
   return (
     <>
@@ -258,9 +302,9 @@ const Main = () => {
                 </p>
               </li>
             </ul>
-            <S.ProjectSliderContainer ref={silderContainer}>
-              <S.ProjectImgList>
-                {imglist.map((img, key) => {
+            <S.ProjectSliderContainer>
+              <S.ProjectImgList ref={imgList}>
+                {iltalImglist.map((img, key) => {
                   return (
                     <S.ProjectImgBox key={key}>
                       <div />
@@ -271,7 +315,7 @@ const Main = () => {
               </S.ProjectImgList>
             </S.ProjectSliderContainer>
             <S.ButtonBox>
-              <S.PrevButton>
+              <S.PrevButton onClick={handlePrevButton}>
                 <img alt="prev" src={prev} />
               </S.PrevButton>
               <S.NextButton onClick={handleNextButton}>
