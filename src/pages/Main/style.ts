@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const MainWapper = styled.div`
   width: 1050px;
   margin: 100px auto 0px auto;
   font-family: NotoSansR;
   color: #372a28;
+  zoom: 0.85;
 `;
 
 export const Header = styled.header`
@@ -206,7 +207,6 @@ export const ProjectSliderContainer = styled.div`
   height: 600px;
   width: 900px;
   margin: 80px auto 80px auto;
-  /* background-color: aliceblue; */
   overflow: hidden;
 `;
 
@@ -221,7 +221,6 @@ export const ProjectImgBox = styled.div`
   div {
     width: 900px;
   }
-  /* background-color: antiquewhite; */
 `;
 
 export const ProjectImg = styled.img`
@@ -231,7 +230,8 @@ export const ProjectImg = styled.img`
   height: 530px;
   display: block;
   transform: translate(-50%, -50%);
-  border: 1px solid black;
+  border: 1px solid #c8c5c5;
+  border-radius: 10px;
 `;
 
 export const ButtonBox = styled.div`
@@ -254,5 +254,100 @@ export const PrevButton = styled.button`
   background-color: transparent;
   img {
     height: 100px;
+  }
+`;
+
+export const DotPositionBox = styled.div`
+  display: inline-flex;
+  gap: 20px;
+  position: relative;
+  bottom: 200px;
+  left: 450px;
+`;
+
+interface PositionProps {
+  position: number;
+  imgIndex: number;
+}
+
+export const Dot = styled.div<PositionProps>`
+  height: 20px;
+  width: 20px;
+  border: 1px solid #87898c;
+  border-radius: 50%;
+  background-color: ${({ position, imgIndex }) =>
+    position === imgIndex ? "#97a9d0" : "#eeeeee"};
+`;
+
+export const ProjectExplainBox = styled.div`
+  position: relative;
+  bottom: 180px;
+`;
+
+const ProjectExplainStyle = css`
+  width: 800px;
+  padding: 0px 50px 50px 50px;
+  margin: 20px auto 0px auto;
+  font-size: 20px;
+  border-radius: 10px;
+  line-height: 130%;
+  background-color: #f3f5f9;
+
+  li {
+    margin-top: 30px;
+    margin-bottom: -20px;
+  }
+
+  h2 {
+    padding-top: 50px;
+    margin-bottom: 20px;
+    color: #427e9a;
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 23px;
+  }
+`;
+
+export const ProjectFirstExplain = styled.div<PositionProps>`
+  display: ${({ position, imgIndex }) =>
+    position === imgIndex ? "block" : "none"};
+  ${ProjectExplainStyle}
+`;
+
+export const ProjectSecondExplain = styled.div<PositionProps>`
+  display: ${({ position, imgIndex }) =>
+    position === imgIndex ? "block" : "none"};
+  ${ProjectExplainStyle}
+`;
+
+export const ProjectThirdExplain = styled.div<PositionProps>`
+  display: ${({ position, imgIndex }) =>
+    position === imgIndex ? "block" : "none"};
+  ${ProjectExplainStyle}
+`;
+
+export const ProjectReviewTitle = styled.div`
+  font-size: 30px;
+  color: #427e9a;
+`;
+
+export const ProjectReview = styled.div`
+  padding: 50px;
+  margin: 20px auto 0px auto;
+  font-size: 23px;
+  line-height: 130%;
+  border-radius: 10px;
+  background-color: #f3f5f9;
+
+  ol {
+    list-style-type: decimal;
+    margin-left: 25px;
+    line-height: 150%;
+  }
+
+  li {
+    margin-top: 10px;
   }
 `;
