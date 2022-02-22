@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const InternshipSection = styled.section`
   width: 1000px;
