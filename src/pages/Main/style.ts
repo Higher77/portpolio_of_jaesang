@@ -6,6 +6,7 @@ export const MainWapper = styled.div`
   font-family: NotoSansR;
   color: #372a28;
   zoom: 0.85;
+  /* background-color: blue; */
 `;
 
 export const Header = styled.header`
@@ -41,7 +42,7 @@ export const TitleImg = styled.img`
 
 export const TitleLine = styled.div`
   width: 1000px;
-  margin: 80px auto 0px auto;
+  margin: 10px auto 0px auto;
   border: 1px solid black;
 `;
 
@@ -103,176 +104,55 @@ export const ProjectTitle = styled.h1`
   border-bottom: 2px solid black;
 `;
 
-export const ProjectTask = styled.section`
-  margin-top: 100px;
-  font-size: 25px;
-  ul {
-    padding-left: 25px;
-    list-style-type: disc;
-    list-style-position: outside;
-  }
+//contact
 
-  li {
-    margin-top: 30px;
+export const ContactBox = styled.div`
+  display: flex;
+  gap: 200px;
+  height: 100px;
+  width: 900px;
+  margin: 0px auto 0px auto;
+`;
 
-    p {
-      margin-top: 10px;
-      margin-left: -5px;
+export const ContactSite = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+`;
+
+export const Github = styled.a`
+  background-color: white;
+  height: 50px;
+  width: 50px;
+  img {
+    display: block;
+    width: 50px;
+    margin-top: 5px;
+
+    &:hover {
+      opacity: 50%;
     }
   }
 `;
 
-export const ProjectTaskTitle = styled.h3`
-  margin: 20px 0px 50px 0px;
-  font-size: 35px;
-  color: #427e9a;
-`;
-
-export const ProjectSliderContainer = styled.div`
-  height: 600px;
-  width: 900px;
-  margin: 80px auto 80px auto;
-  overflow: hidden;
-`;
-
-export const ProjectImgList = styled.div`
-  display: flex;
-  height: 600px;
-  transform: translateX(-900px);
-`;
-
-export const ProjectImgBox = styled.div`
-  position: relative;
-  div {
-    width: 900px;
-  }
-`;
-
-export const ProjectImg = styled.img`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 530px;
-  display: block;
-  transform: translate(-50%, -50%);
-  border: 1px solid #c8c5c5;
-  border-radius: 10px;
-`;
-
-export const ButtonBox = styled.div`
-  position: relative;
-  bottom: 430px;
-`;
-
-export const NextButton = styled.button`
-  position: relative;
-  left: 860px;
-  background-color: transparent;
+export const Tistory = styled.a`
+  background-color: white;
+  height: 62px;
+  width: 62px;
   img {
-    height: 100px;
-  }
-`;
-
-export const PrevButton = styled.button`
-  position: relative;
-  left: 10px;
-  background-color: transparent;
-  img {
-    height: 100px;
-  }
-`;
-
-export const DotPositionBox = styled.div`
-  display: inline-flex;
-  gap: 20px;
-  position: relative;
-  bottom: 200px;
-  left: 450px;
-`;
-
-interface PositionProps {
-  position: number;
-  imgIndex: number;
-}
-
-export const Dot = styled.div<PositionProps>`
-  height: 20px;
-  width: 20px;
-  border: 1px solid #87898c;
-  border-radius: 50%;
-  background-color: ${({ position, imgIndex }) =>
-    position === imgIndex ? "#97a9d0" : "#eeeeee"};
-`;
-
-export const ProjectExplainBox = styled.div`
-  position: relative;
-  bottom: 180px;
-`;
-
-const ProjectExplainStyle = css`
-  width: 800px;
-  padding: 0px 50px 50px 50px;
-  margin: 20px auto 0px auto;
-  font-size: 20px;
-  border-radius: 10px;
-  line-height: 130%;
-  background-color: #f3f5f9;
-
-  li {
-    margin-top: 30px;
-    margin-bottom: -20px;
-  }
-
-  h2 {
-    padding-top: 50px;
-    margin-bottom: 20px;
-    color: #427e9a;
-    font-size: 32px;
-  }
-
-  h3 {
-    font-size: 23px;
-  }
-`;
-
-export const ProjectFirstExplain = styled.div<PositionProps>`
-  display: ${({ position, imgIndex }) =>
-    position === imgIndex ? "block" : "none"};
-  ${ProjectExplainStyle}
-`;
-
-export const ProjectSecondExplain = styled.div<PositionProps>`
-  display: ${({ position, imgIndex }) =>
-    position === imgIndex ? "block" : "none"};
-  ${ProjectExplainStyle}
-`;
-
-export const ProjectThirdExplain = styled.div<PositionProps>`
-  display: ${({ position, imgIndex }) =>
-    position === imgIndex ? "block" : "none"};
-  ${ProjectExplainStyle}
-`;
-
-export const ProjectReviewTitle = styled.div`
-  font-size: 30px;
-  color: #427e9a;
-`;
-
-export const ProjectReview = styled.div`
-  padding: 50px;
-  margin: 20px auto 0px auto;
-  font-size: 23px;
-  line-height: 130%;
-  border-radius: 10px;
-  background-color: #f3f5f9;
-
-  ol {
-    list-style-type: decimal;
-    margin-left: 25px;
-    line-height: 150%;
-  }
-
-  li {
+    display: block;
+    width: 62px;
     margin-top: 10px;
+
+    &:hover {
+      opacity: 50%;
+    }
   }
+`;
+
+export const Contact = styled.div`
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  font-size: 20px;
 `;

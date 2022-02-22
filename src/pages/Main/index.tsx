@@ -1,9 +1,9 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import Iltal from "./Project/Iltal";
 import Watcu from "./Project/Watcu";
 import Internship from "./Internship";
 import * as S from "./style";
-import { title, skill, viva } from "assets/images";
+import { title, skill, github, tistory } from "assets/images";
 
 const Main = () => {
   return (
@@ -17,6 +17,20 @@ const Main = () => {
             </S.TitleTextBox>
             <S.TitleImg alt="titleimg" src={title} />
           </S.TitleBox>
+          <S.ContactBox>
+            <S.ContactSite>
+              <S.Github href="https://github.com/Higher77" target="_blank">
+                <img alt="github" src={github} />
+              </S.Github>
+              <S.Tistory href="https://higher77.tistory.com/" target="_blank">
+                <img alt="tistory" src={tistory} />
+              </S.Tistory>
+            </S.ContactSite>
+            <S.Contact>
+              <p>📞 Phone : 010-2249-4178</p>
+              <p>📨 Mail : ask6743@gmail.com</p>
+            </S.Contact>
+          </S.ContactBox>
           <S.TitleLine />
         </S.Header>
         <S.IntroduceSection>
@@ -67,6 +81,7 @@ const Main = () => {
 
           <Watcu />
 
+          <S.Blank />
           <S.Blank />
           <S.Blank />
           <S.Blank />
